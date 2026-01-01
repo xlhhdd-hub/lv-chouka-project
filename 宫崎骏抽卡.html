@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026新年运势抽卡 | 宫崎骏专属</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", 微软雅黑, sans-serif;
+        }
+
+        body {
+            /* 温暖渐变背景替换冷蓝色 */
+            background: linear-gradient(135deg, #fff8e1 0%, #ffe0b2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header {
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            /* 温暖橙红色替换冷蓝色 */
+            color: #e67e22;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        /* 答题区域样式 */
+        .question-container {
+            display: none;
+            margin: 30px auto;
+            max-width: 600px;
+        }
+
+        .question-title {
+            font-size: 1.5rem;
+            color: #e67e22;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .option-btn {
+            background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            font-size: 1.1rem;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(230, 126, 34, 0.3);
+        }
+
+        .option-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(230, 126, 34, 0.4);
+        }
+
+        .option-btn:active {
+            transform: translateY(1px);
+        }
+
+        /* 卡片样式 */
+        .card-container {
+            position: relative;
+            width: 300px;
+            height: 450px;
+            margin: 30px auto;
+            perspective: 1000px;
+            display: none;
+        }
+
+        .card {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .card-front {
+            /* 温暖橙红渐变替换冷蓝色 */
+            background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
+            color: white;
+            cursor: pointer;
+        }
+
+        .card-back {
+            background: white;
+            color: #333;
+            transform: rotateY(180deg);
+            /* 温暖橙色边框替换冷蓝色 */
+            border: 2px solid #e67e22;
+        }
+
+        .card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-front h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .card-front p {
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
+
+        .card-icon {
+            font-size: 5rem;
+            margin: 20px 0;
+        }
+
+        /* 人物信息样式 */
+        .character-info {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .character-name {
+            font-size: 1.8rem;
+            color: #e67e22;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .character-title {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .blessing-content {
+            text-align: center;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .blessing-quote {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .blessing-people {
+            font-size: 0.95rem;
+            color: #888;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .blessing-effect {
+            font-size: 1rem;
+            color: #e67e22;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* 按钮样式 */
+        .btn {
+            background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            box-shadow: 0 4px 10px rgba(230, 126, 34, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(230, 126, 34, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+        /* 装饰元素 */
+        .decor {
+            position: absolute;
+            font-size: 3rem;
+            color: rgba(230, 126, 34, 0.2);
+        }
+
+        .decor-1 {
+            top: 20px;
+            left: 20px;
+        }
+
+        .decor-2 {
+            bottom: 20px;
+            right: 20px;
+        }
+
+        /* 重新开始按钮 */
+        .restart-btn {
+            margin-top: 30px;
+            display: none;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .card-container {
+                width: 260px;
+                height: 420px;
+            }
+            
+            .question-title {
+                font-size: 1.3rem;
+            }
+            
+            .option-btn {
+                font-size: 1rem;
+                padding: 12px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 装饰元素 -->
+        <div class="decor decor-1">🎐</div>
+        <div class="decor decor-2">✨</div>
+        
+        <!-- 头部标题 -->
+        <div class="header">
+            <h1>2026新年运势抽卡</h1>
+            <p>答题抽取你的专属宫崎骏角色新年祝福</p>
+        </div>
+
+        <!-- 答题区域 -->
+        <div class="question-container" id="questionContainer">
+            <div class="question-title" id="questionTitle">请选择你的内心答案</div>
+            <div class="options" id="optionsContainer">
+                <button class="option-btn" id="optionA">选项A</button>
+                <button class="option-btn" id="optionB">选项B</button>
+            </div>
+        </div>
+
+        <!-- 抽卡区域 -->
+        <div class="card-container" id="cardContainer">
+            <div class="card" id="fortuneCard">
+                <!-- 卡片正面 -->
+                <div class="card-front" id="cardFront">
+                    <div class="card-icon">🎴</div>
+                    <h2>新年祝福</h2>
+                    <p>点击查看你的专属祝福</p>
+                </div>
+                
+                <!-- 卡片背面 -->
+                <div class="card-back">
+                    <div class="character-info" id="characterInfo">
+                        <div>
+                            <div class="character-name" id="charName">龙猫</div>
+                            <div class="character-title" id="charTitle">《龙猫》· 森林的守护者</div>
+                        </div>
+                        
+                        <div class="blessing-content">
+                            <p class="blessing-quote" id="blessingQuote">
+                                "新年将至，愿你如森林般充满生机，每一步都有温柔相伴。"
+                            </p>
+                            <p class="blessing-people" id="blessingPeople">
+                                适配人群：温柔且热爱生活，愿意用心守护身边美好事物的你
+                            </p>
+                            <p class="blessing-effect" id="blessingEffect">
+                                【自然守护】：新的一年被温柔环绕，生活充满自然的美好与惊喜
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 重新开始按钮 -->
+        <button class="btn restart-btn" id="restartBtn">重新答题抽祝福</button>
+    </div>
+
+    <script>
+        // 7道二选一题目（温柔治愈风格）
+        const questions = [
+            {
+                title: "新的一年，你更希望自己是？",
+                options: [
+                    "温柔包容，温暖身边的人",
+                    "勇敢坚定，追逐心中梦想"
+                ]
+            },
+            {
+                title: "面对生活的小烦恼，你更倾向于？",
+                options: [
+                    "安静沉淀，慢慢化解",
+                    "积极行动，主动改变"
+                ]
+            },
+            {
+                title: "你向往的生活状态是？",
+                options: [
+                    "简单平淡，安稳幸福",
+                    "热烈鲜活，充满挑战"
+                ]
+            },
+            {
+                title: "遇到困难时，你更需要的是？",
+                options: [
+                    "他人的陪伴与理解",
+                    "自我的成长与突破"
+                ]
+            },
+            {
+                title: "你更想成为什么样的人？",
+                options: [
+                    "温暖治愈的守护者",
+                    "勇敢前行的追光者"
+                ]
+            },
+            {
+                title: "对于未来，你的态度是？",
+                options: [
+                    "顺其自然，享受当下",
+                    "主动规划，奔赴美好"
+                ]
+            },
+            {
+                title: "你认为幸福是？",
+                options: [
+                    "被爱包围，岁月静好",
+                    "突破自我，实现价值"
+                ]
+            }
+        ];
+
+        // 32个宫崎骏角色数据 - 每位角色4种祝福（共128种）
+        const characters = [
+            // 《龙猫》系列
+            {
+                name: "龙猫",
+                title: "《龙猫》· 森林的守护者",
+                blessings: [
+                    { 
+                        quote: "新年将至，愿你如森林般充满生机，每一步都有温柔相伴。", 
+                        people: "适配人群：温柔且热爱生活，愿意用心守护身边美好事物的你",
+                        effect: "【自然守护】：新的一年被温柔环绕，生活充满自然的美好与惊喜" 
+                    },
+                    { 
+                        quote: "新春纳福，愿你拥有龙猫的魔法，所有烦恼都随风而去。", 
+                        people: "适配人群：偶尔会焦虑迷茫，渴望简单快乐、被温柔治愈的你",
+                        effect: "【魔法加持】：新的一年好运连连，困难都能轻松化解" 
+                    },
+                    { 
+                        quote: "岁启新章，愿你像龙猫一样守护身边的人，温暖又治愈。", 
+                        people: "适配人群：内心柔软，愿意默默付出、守护家人朋友的你",
+                        effect: "【温暖治愈】：新的一年成为他人的小太阳，也被世界温柔以待" 
+                    },
+                    { 
+                        quote: "新年安康，愿你如龙猫般从容自在，享受生活的小美好。", 
+                        people: "适配人群：喜欢慢生活，懂得发现和珍惜日常小确幸的你",
+                        effect: "【从容自在】：新的一年不慌不忙，生活处处有温暖" 
+                    }
+                ]
+            },
+            {
+                name: "小梅",
+                title: "《龙猫》· 天真烂漫的小天使",
+                blessings: [
+                    { 
+                        quote: "新年纳祥，愿你永远保持小梅般的天真，眼里有星光。", 
+                        people: "适配人群：内心纯粹，始终对世界抱有美好期待的你",
+                        effect: "【童心未泯】：新的一年保持纯粹，生活充满简单的快乐" 
+                    },
+                    { 
+                        quote: "新春大吉，愿你如小梅般勇敢探索，发现生活的小美好。", 
+                        people: "适配人群：充满好奇心，愿意尝试新鲜事物的你",
+                        effect: "【探索美好】：新的一年勇于尝试，收获意想不到的惊喜" 
+                    },
+                    { 
+                        quote: "岁首迎新，愿你像小梅一样被爱包围，幸福又温暖。", 
+                        people: "适配人群：渴望被爱与呵护，珍惜亲情温暖的你",
+                        effect: "【被爱环绕】：新的一年家人相伴，爱意满满，幸福安康" 
+                    },
+                    { 
+                        quote: "新年喜乐，愿你如小梅般率真可爱，做真实的自己。", 
+                        people: "适配人群：不喜欢伪装，愿意展现真实自我的你",
+                        effect: "【率真可爱】：新的一年活得真实，收获更多偏爱" 
+                    }
+                ]
+            },
+            {
+                name: "小月",
+                title: "《龙猫》· 温柔懂事的姐姐",
+                blessings: [
+                    { 
+                        quote: "新年开运，愿你如小月般温柔坚强，守护所爱之人。", 
+                        people: "适配人群：外表温柔内心坚韧，愿意为家人付出的你",
+                        effect: "【温柔坚强】：新的一年内心柔软，行事坚定，无往不利" 
+                    },
+                    { 
+                        quote: "新春纳福，愿你像小月一样懂事体贴，收获满满的爱。", 
+                        people: "适配人群：善解人意，懂得换位思考照顾他人感受的你",
+                        effect: "【善解人意】：新的一年人际关系和谐，处处遇贵人" 
+                    },
+                    { 
+                        quote: "岁新福至，愿你拥有小月的勇气，面对困难从不退缩。", 
+                        people: "适配人群：看似柔弱却有强大内心，能勇敢面对挑战的你",
+                        effect: "【勇敢前行】：新的一年无所畏惧，披荆斩棘，终达目标" 
+                    },
+                    { 
+                        quote: "新年顺遂，愿你如小月般独立懂事，成为家人的依靠。", 
+                        people: "适配人群：早早懂事，愿意为家庭分担责任的你",
+                        effect: "【独立担当】：新的一年成为家人的骄傲，收获认可与温暖" 
+                    }
+                ]
+            },
+            {
+                name: "龙猫巴士",
+                title: "《龙猫》· 神奇的森林巴士",
+                blessings: [
+                    { 
+                        quote: "新年同欢，愿你如龙猫巴士般神奇，总能到达想去的地方。", 
+                        people: "适配人群：有明确目标，渴望奔赴理想生活的你",
+                        effect: "【心想事成】：新的一年想去哪里就去哪里，心想事成" 
+                    },
+                    { 
+                        quote: "新春踏歌，愿你像龙猫巴士一样可靠，载着梦想前行。", 
+                        people: "适配人群：踏实靠谱，愿意为梦想稳步前行的你",
+                        effect: "【载梦前行】：新的一年带着自己的梦想，稳步前行" 
+                    },
+                    { 
+                        quote: "岁华新至，愿你拥有龙猫巴士的魔力，实现所有的愿望。", 
+                        people: "适配人群：心怀美好期许，渴望梦想成真的你",
+                        effect: "【愿望成真】：新的一年所有愿望都能实现" 
+                    },
+                    { 
+                        quote: "新年安康，愿你如龙猫巴士般包容，承载生活的所有美好。", 
+                        people: "适配人群：心胸宽广，愿意接纳生活中所有美好的你",
+                        effect: "【包容承载】：新的一年收获满满，生活充实而美好" 
+                    }
+                ]
+            },
+
+            // 《千与千寻》系列
+            {
+                name: "千寻",
+                title: "《千与千寻》· 勇敢成长的少女",
+                blessings: [
+                    { 
+                        quote: "新年同欢，愿你如千寻般勇敢，在未知的旅程中找到自我。", 
+                        people: "适配人群：正处于人生新阶段，渴望成长与突破的你",
+                        effect: "【自我成长】：新的一年突破自我，遇见更好的自己" 
+                    },
+                    { 
+                        quote: "新春踏歌，愿你像千寻一样坚守本心，不迷失方向。", 
+                        people: "适配人群：身处复杂环境，仍想保持初心的你",
+                        effect: "【不忘初心】：新的一年保持本真，不被外界所迷惑" 
+                    },
+                    { 
+                        quote: "岁华新至，愿你拥有千寻的善良，温暖每一个遇见的人。", 
+                        people: "适配人群：内心善良，愿意用善意对待世界的你",
+                        effect: "【善良温暖】：新的一年积善成德，福报自来" 
+                    },
+                    { 
+                        quote: "新年喜乐，愿你如千寻般坚韧，在成长中变得更加强大。", 
+                        people: "适配人群：经历过挫折，仍愿意勇敢前行的你",
+                        effect: "【成长蜕变】：新的一年破茧成蝶，遇见全新的自己" 
+                    }
+                ]
+            },
+            {
+                name: "白龙",
+                title: "《千与千寻》· 温柔守护的琥珀川",
+                blessings: [
+                    { 
+                        quote: "新年安康，愿你如白龙般守护重要的人，也被温柔以待。", 
+                        people: "适配人群：愿意默默守护所爱之人，重情重义的你",
+                        effect: "【守护幸福】：新的一年守护所爱，幸福常伴左右" 
+                    },
+                    { 
+                        quote: "新春纳福，愿你像白龙一样找回自我，不忘初心。", 
+                        people: "适配人群：偶尔会迷失自我，渴望找回初心的你",
+                        effect: "【找回初心】：新的一年认清自我，找到人生的方向" 
+                    },
+                    { 
+                        quote: "岁新福至，愿你拥有白龙的魔法，克服一切困难险阻。", 
+                        people: "适配人群：正面临挑战，需要勇气和力量克服困难的你",
+                        effect: "【化险为夷】：新的一年逢凶化吉，事事顺心如意" 
+                    },
+                    { 
+                        quote: "新年顺遂，愿你如白龙般温柔坚定，守护心中的美好。", 
+                        people: "适配人群：外表清冷内心温柔，有自己坚守的美好信念的你",
+                        effect: "【温柔坚定】：新的一年坚守美好，收获稳稳的幸福" 
+                    }
+                ]
+            },
+            {
+                name: "无脸男",
+                title: "《千与千寻》· 孤独又温柔的精灵",
+                blessings: [
+                    { 
+                        quote: "新年开运，愿你如无脸男般纯粹，找到属于自己的温暖。", 
+                        people: "适配人群：偶尔感到孤独，渴望找到心灵归属的你",
+                        effect: "【找到归属】：新的一年不再孤单，找到心灵的港湾" 
+                    },
+                    { 
+                        quote: "新春纳福，愿你像无脸男一样懂得付出，收获真心的陪伴。", 
+                        people: "适配人群：愿意真心付出，渴望收获真挚感情的你",
+                        effect: "【真心相伴】：新的一年有人懂你，有人陪你，不再孤单" 
+                    },
+                    { 
+                        quote: "岁新福至，愿你接纳自己的不完美，如无脸男般温柔待己。", 
+                        people: "适配人群：常常自我苛责，需要学会接纳不完美的自己的你",
+                        effect: "【自我接纳】：新的一年与自己和解，拥抱不完美的自己" 
+                    },
+                    { 
+                        quote: "新年喜乐，愿你如无脸男般纯粹真诚，收获简单的幸福。", 
+                        people: "适配人群：内心纯粹，渴望简单真诚的人际关系的你",
+                        effect: "【纯粹幸福】：新的一年收获简单而真挚的幸福" 
+                    }
+                ]
+            },
+            {
+                name: "钱婆婆",
+                title: "《千与千寻》· 温柔的魔法婆婆",
+                blessings: [
+                    { 
+                        quote: "新年静心，愿你如钱婆婆般温柔慈祥，生活简单而美好。", 
+                        people: "适配人群：向往简单生活，内心温柔慈祥的你",
+                        effect: "【简单美好】：新的一年远离纷扰，生活简单又幸福" 
+                    },
+                    { 
+                        quote: "新春纳福，愿你像钱婆婆一样用善意对待世界，收获温暖。", 
+                        people: "适配人群：愿意用善意对待世界，相信美好会如约而至的你",
+                        effect: "【善意待人】：新的一年广结善缘，收获满满的善意" 
+                    },
+                    { 
+                        quote: "岁华更新，愿你拥有钱婆婆的智慧，从容面对人生百态。", 
+                        people: "适配人群：经历过人生起伏，渴望从容面对生活的你",
+                        effect: "【智慧从容】：新的一年处事从容，充满人生智慧" 
+                    },
+                    { 
+                        quote: "新年安康，愿你如钱婆婆般平和淡然，享受生活的美好。", 
+                        people: "适配人群：心态平和，懂得享受生活点滴美好的你",
+                        effect: "【平和淡然】：新的一年心态平和，幸福常伴" 
+                    }
+                ]
+            },
+
+            // 《哈尔的移动城堡》系列
+            {
+                name: "哈尔",
+                title: "《哈尔的移动城堡》· 温柔的魔法使",
+                blessings: [
+                    { 
+                        quote: "新年安康，愿你如哈尔般温柔勇敢，守护所爱之人。", 
+                        people: "适配人群：温柔且有勇气，愿意守护所爱之人的你",
+                        effect: "【勇敢守护】：新的一年有勇气保护自己和重要的人" 
+                    },
+                    { 
+                        quote: "新春喜乐，愿你像哈尔一样追求自由，活得热烈而精彩。", 
+                        people: "适配人群：渴望自由，不愿被束缚，想活成自己喜欢的样子的你",
+                        effect: "【自由热烈】：新的一年挣脱束缚，活出自己的精彩" 
+                    },
+                    { 
+                        quote: "岁聿其莫，愿你拥有哈尔的魔法，让生活充满惊喜。", 
+                        people: "适配人群：渴望生活充满新鲜感，期待惊喜的你",
+                        effect: "【惊喜不断】：新的一年生活处处有惊喜，充满美好" 
+                    },
+                    { 
+                        quote: "新年开运，愿你如哈尔般温柔浪漫，生活充满诗意。", 
+                        people: "适配人群：内心浪漫，渴望生活有仪式感的你",
+                        effect: "【温柔浪漫】：新的一年生活充满诗意，浪漫常伴" 
+                    }
+                ]
+            },
+            {
+                name: "苏菲",
+                title: "《哈尔的移动城堡》· 坚韧的少女",
+                blessings: [
+                    { 
+                        quote: "新年纳祥，愿你如苏菲般坚韧不拔，逆境中绽放光芒。", 
+                        people: "适配人群：正身处逆境，需要坚韧意志克服困难的你",
+                        effect: "【逆境成长】：新的一年在困难中成长，变得更加强大" 
+                    },
+                    { 
+                        quote: "新春吉庆，愿你像苏菲一样善良温柔，治愈身边的人。", 
+                        people: "适配人群：内心温柔，愿意用善意治愈他人的你",
+                        effect: "【治愈他人】：新的一年用温柔治愈他人，也治愈自己" 
+                    },
+                    { 
+                        quote: "岁首迎新，愿你拥有苏菲的勇气，打破命运的枷锁。", 
+                        people: "适配人群：渴望突破现状，打破自我限制的你",
+                        effect: "【打破束缚】：新的一年突破限制，活出自己想要的人生" 
+                    },
+                    { 
+                        quote: "新年喜乐，愿你如苏菲般外柔内刚，活出独特的美好。", 
+                        people: "适配人群：外表温柔内心坚强，有自己独特魅力的你",
+                        effect: "【外柔内刚】：新的一年绽放独特光芒，收获美好" 
+                    }
+                ]
+            },
+            {
+                name: "卡西法",
+                title: "《哈尔的移动城堡》· 火焰恶魔",
+                blessings: [
+                    { 
+                        quote: "新年奋进，愿你如卡西法般热情似火，点燃生活的希望。", 
+                        people: "适配人群：渴望充满热情，点燃生活希望的你",
+                        effect: "【热情似火】：新的一年充满激情，对生活充满热爱" 
+                    },
+                    { 
+                        quote: "新春纳福，愿你像卡西法一样忠诚守护，成为他人的依靠。", 
+                        people: "适配人群：忠诚可靠，愿意成为家人朋友依靠的你",
+                        effect: "【忠诚可靠】：新的一年值得信赖，成为家人朋友的依靠" 
+                    },
+                    { 
+                        quote: "岁新福至，愿你拥有卡西法的能量，充满无限的可能。", 
+                        people: "适配人群：渴望充满能量，解锁人生更多可能的你",
+                        effect: "【能量满满】：新的一年精力充沛，做什么都动力十足" 
+                    },
+                    { 
+                        quote: "新年开运，愿你如卡西法般炽热勇敢，追逐心中的光。", 
+                        people: "适配人群：内心炽热，勇敢追逐梦想的你",
+                        effect: "【炽热追梦】：新的一年勇敢前行，靠近心中的光" 
+                    }
+                ]
+            },
+            {
+                name: "马鲁克",
+                title: "《哈尔的移动城堡》· 哈尔的小徒弟",
+                blessings: [
+                    { 
+                        quote: "新年喜乐，愿你如马鲁克般活泼可爱，生活充满欢乐。", 
+                        people: "适配人群：性格活泼，能给身边人带来欢乐的你",
+                        effect: "【欢乐常伴】：新的一年笑口常开，生活充满欢声笑语" 
+                    },
+                    { 
+                        quote: "新春吉祥，愿你像马鲁克一样聪明伶俐，学习进步神速。", 
+                        people: "适配人群：正在学习成长，渴望快速进步的你",
+                        effect: "【聪明伶俐】：新的一年头脑灵活，学习工作都出色" 
+                    },
+                    { 
+                        quote: "岁启新章，愿你拥有马鲁克的好奇心，探索世界的美好。", 
+                        people: "适配人群：对世界充满好奇，愿意探索未知的你",
+                        effect: "【保持好奇】：新的一年对世界充满好奇，收获更多美好" 
+                    },
+                    { 
+                        quote: "新年安康，愿你如马鲁克般纯真快乐，童心未泯。", 
+                        people: "适配人群：保持童心，容易满足的快乐小天使",
+                        effect: "【纯真快乐】：新的一年简单快乐，无忧无虑" 
+                    }
+                ]
+            },
+
+            // 《魔女宅急便》系列
+            {
+                name: "琪琪",
+                title: "《魔女宅急便》· 元气满满的小魔女",
+                blessings: [
+                    { 
+                        quote: "新年修德，愿你如琪琪般元气满满，对生活充满热情。", 
+                        people: "适配人群：元气满满，永远对生活充满热情的你",
+                        effect: "【元气满满】：新的一年精力充沛，活力四射" 
+                    },
+                    { 
+                        quote: "新春明礼，愿你像琪琪一样勇敢独立，独自闯荡世界。", 
+                        people: "适配人群：渴望独立，愿意勇敢闯荡的你",
+                        effect: "【勇敢独立】：新的一年有勇气独自面对挑战，独立自主" 
+                    },
+                    { 
+                        quote: "岁新福至，愿你拥有琪琪的坚持，即使遇到困难也不放弃。", 
+                        people: "适配人群：有自己的目标，愿意坚持不放弃的你",
+                        effect: "【永不放弃】：新的一年坚持不懈，终会迎来成功" 
+                    },
+                    { 
+                        quote: "新年开运，愿你如琪琪般勇敢追梦，找到属于自己的价值。", 
+                        people: "适配人群：正在寻找自我价值，勇敢追梦的你",
+                        effect: "【追梦前行】：新的一年找到自我价值，收获成就感" 
+                    }
+                ]
+            },
+            {
+                name: "吉吉",
+                title: "《魔女宅急便》· 琪琪的黑猫伙伴",
+                blessings: [
+                    { 
+                        quote: "新年悟道，愿你如吉吉般忠诚陪伴，永远有知心伙伴。", 
+                        people: "适配人群：重视友情，渴望长久陪伴的你",
+                        effect: "【挚友相伴】：新的一年有知心好友，一路相伴不孤单" 
+                    },
+                    { 
+                        quote: "新春自然，愿你像吉吉一样机灵活泼，给身边的人带来欢乐。", 
+                        people: "适配人群：机灵活泼，是身边人的开心果的你",
+                        effect: "【活泼有趣】：新的一年风趣幽默，成为大家的开心果" 
+                    },
+                    { 
+                        quote: "岁新福至，愿你拥有吉吉的敏锐，及时发现生活的美好。", 
+                        people: "适配人群：心思细腻，能发现生活中细微美好的你",
+                        effect: "【敏锐感知】：新的一年感知力强，发现生活中的小确幸" 
+                    },
+                    { 
+                        quote: "新年喜乐，愿你如吉吉般陪伴左右，温暖又贴心。", 
+                        people: "适配人群：懂得陪伴的珍贵，愿意守护在重要的人身边的你",
+                        effect: "【温暖陪伴】：新的一年有人陪伴，温暖常伴" 
+                    }
+                ]
+            },
+            {
+                name: "索娜",
+                title: "《魔女宅急便》· 面包店的老板娘",
+                blessings: [
+                    { 
+                        quote: "新年向善，愿你如索娜般温柔善良，给予他人温暖。", 
+                        people: "适配人群：温柔善良，愿意给予他人温暖的你",
+                        effect: "【温柔善良】：新的一年心怀善意，温暖他人也温暖自己" 
+                    },
+                    { 
+                        quote: "新春励志，愿你像索娜一样乐于助人，收获满满的感激。", 
+                        people: "适配人群：乐于助人，愿意伸出援手的你",
+                        effect: "【乐于助人】：新的一年帮助他人，收获他人的感激与善意" 
+                    },
+                    { 
+                        quote: "岁新福至，愿你拥有索娜的包容，接纳他人的不完美。", 
+                        people: "适配人群：心胸宽广，愿意包容他人的你",
+                        effect: "【包容大度】：新的一年心胸宽广，包容他人的不足" 
+                    },
+                    { 
+                        quote: "新年安康，愿你如索娜般温暖治愈，成为他人的港湾。", 
+                        people: "适配人群：温暖治愈，能给他人带来安全感的你",
+                        effect: "【温暖港湾】：新的一年成为他人的依靠，收获真挚的感情" 
+                    }
+                ]
+            },
+            {
+                name: "蜻蜓",
+                title: "《魔女宅急便》· 勇敢的少年",
+                blessings: [
+                    { 
+                        quote: "新年逍遥，愿你如蜻蜓般自由飞翔，追逐自己的梦想。", 
+                        people: "适配人群：渴望自由，勇敢追逐梦想的你",
+                        effect: "【追逐梦想】：新的一年勇敢追梦，不辜负自己的热爱" 
+                    },
+                    { 
+                        quote: "新春豁达，愿你像蜻蜓一样热爱飞行，探索更广阔的世界。", 
+                        people: "适配人群：渴望探索，愿意见识更广阔世界的你",
+                        effect: "【探索世界】：新的一年眼界开阔，见识更多美好事物" 
+                    },
+                    { 
+                        quote: "岁新福至，愿你拥有蜻蜓的勇气，敢于尝试新的事物。", 
+                        people: "适配人群：敢于尝试，愿意突破舒适区的你",
+                        effect: "【勇于尝试】：新的一年敢于突破，尝试新的可能" 
+                    },
+                    { 
+                        quote: "新年开运，愿你如蜻蜓般勇往直前，不负青春韶华。", 
+                        people: "适配人群：正值青春，渴望勇往直前的你",
+                        effect: "【勇往直前】：新的一年不负韶华，勇敢前行" 
+                    }
+                ]
+            },
+
+            // 《风之谷》系列
+            {
+                name: "娜乌西卡",
+                title: "《风之谷》· 温柔的风之公主",
+                blessings: [
+                    { 
+                        quote: "新年谋事，愿你如娜乌西卡般善良勇敢，守护自然与和平。", 
+                        people: "适配人群：心怀大爱，愿意守护美好事物的你",
+                        effect: "【守护美好】：新的一年守护自己珍视的一切，平安顺遂" 
+                    },
+                    { 
+                        quote: "新春布局，愿你像娜乌西卡一样智慧过人，化解一切危机。", 
+                        people: "适配人群：聪慧过人，能冷静化解危机的你",
+                        effect: "【智慧化解】：新的一年用智慧解决问题，化解危机" 
+                    },
+                    { 
+                        quote: "岁新福至，愿你拥有娜乌西卡的爱心，善待每一个生命。", 
+                        people: "适配人群：心怀慈悲，愿意善待万物的你",
+                        effect: "【心怀大爱】：新的一年心怀善意，善待万物" 
+                    },
+                    { 
+                        quote: "新年安康，愿你如娜乌西卡般温柔强大，守护心中的和平。", 
+                        people: "适配人群：温柔且强大，有自己坚守的和平与美好的你",
+                        effect: "【温柔强大】：新的一年守护美好，收获内心的平静" 
+                    }
+                ]
+            },
+            {
+                name: "阿斯贝鲁",
+                title: "《风之谷》· 勇敢的少年战士",
+                blessings: [
+                    { 
+                        quote: "新年开创，愿你如阿斯贝鲁般勇敢无畏，直面一切挑战。", 
+                        people: "适配人群：勇敢无畏，敢于直面挑战的你",
+                        effect: "【无畏前行】：新的一年无所畏惧，勇往直前" 
+                    },
+                    { 
+                        quote: "新春立制，愿你像阿斯贝鲁一样重情重义，珍惜身边的人。", 
+                        people: "适配人群：重情重义，格外珍惜身边人的你",
+                        effect: "【重情重义】：新的一年珍惜亲情友情，不辜负他人的信任" 
+                    },
+                    { 
+                        quote: "岁新福至，愿你拥有阿斯贝鲁的坚韧，永不向困难低头。", 
+                        people: "适配人群：坚韧不拔，不愿向困难低头的你",
+                        effect: "【坚韧不拔】：新的一年坚韧不屈，克服一切困难" 
+                    },
+                    { 
+                        quote: "新年开运，愿你如阿斯贝鲁般勇敢担当，守护重要的人。", 
+                        people: "适配人群：有担当，愿意守护重要之人的你",
+                        effect: "【勇敢担当】：新的一年承担责任，守护所爱" 
+                    }
+                ]
+            },
+            {
+                name: "库夏娜",
+                title: "《风之谷》· 强大的公主",
+                blessings: [
+                    { 
+                        quote: "新年开拓，愿你如库夏娜般果断坚强，成就一番事业。", 
+                        people: "适配人群：果断坚强，渴望成就一番事业的你",
+                        effect: "【果断坚强】：新的一年做事果断，内心坚强" 
+                    },
+                    { 
+                        quote: "新春雄才，愿你像库夏娜一样有领导力，带领团队前进。", 
+                        people: "适配人群：有领导才能，愿意带领团队前行的你",
+                        effect: "【领导才能】：新的一年展现领导才能，带领他人共同进步" 
+                    },
+                    { 
+                        quote: "岁新福至，愿你拥有库夏娜的格局，眼光长远有谋略。", 
+                        people: "适配人群：格局宏大，有长远眼光的你",
+                        effect: "【格局宏大】：新的一年眼界开阔，格局远大" 
+                    },
+                    { 
+                        quote: "新年喜乐，愿你如库夏娜般外冷内热，有柔软的内心。", 
+                        people: "适配人群：外表坚强内心柔软，有温度的你",
+                        effect: "【外冷内热】：新的一年既有锋芒也有温柔" 
+                    }
+                ]
+            },
+
+            // 《红猪》系列
+            {
+                name: "波鲁克",
+                title: "《红猪》· 帅气的飞天红猪",
+                blessings: [
+                    { 
+                        quote: "新年悠然，愿你如波鲁克般潇洒自在，不被世俗束缚。", 
+                        people: "适配人群：向往自由，不愿被世俗束缚的你",
+                        effect: "【潇洒自在】：新的一年活得洒脱，不受世俗眼光影响" 
+                    },
+                    { 
+                        quote: "新春归真，愿你像波鲁克一样坚守原则，做真实的自己。", 
+                        people: "适配人群：坚守原则，不愿违背本心的你",
+                        effect: "【坚守本心】：新的一年不迎合他人，做最真实的自己" 
+                    },
+                    { 
+                        quote: "岁新福至，愿你拥有波鲁克的勇气，直面自己的内心。", 
+                        people: "适配人群：有勇气直面内心，接纳真实自我的你",
+                        effect: "【直面内心】：新的一年勇敢面对自己的内心，接纳自己" 
+                    },
+                    { 
+                        quote: "新年开运，愿你如波鲁克般随性洒脱，活出真性情。", 
+                        people: "适配人群：随性洒脱，不愿伪装的真性情的你",
+                        effect: "【随性洒脱】：新的一年活出真性情，收获自在人生" 
+                    }
+                ]
+            },
+            {
+                name: "菲奥",
+                title: "《红猪》· 天才飞机设计师",
+                blessings: [
+                    { 
+                        quote: "新年奋进，愿你如菲奥般才华横溢，展现自己的天赋。", 
+                        people: "适配人群：才华横溢，渴望展现自我价值的你",
+                        effect: "【才华横溢】：新的一年发挥自己的才能，大放异彩" 
+                    },
+                    { 
+                        quote: "新春纳福，愿你像菲奥一样聪明机智，解决各种难题。", 
+                        people: "适配人群：聪明机智，善于解决问题的你",
+                        effect: "【聪明机智】：新的一年头脑灵活，轻松解决各种问题" 
+                    },
+                    { 
+                        quote: "岁新福至，愿你拥有菲奥的创造力，创造出属于自己的精彩。", 
+                        people: "适配人群：富有创造力，渴望创造精彩的你",
+                        effect: "【富有创造】：新的一年充满创意，创造更多美好" 
+                    },
+                    { 
+                        quote: "新年喜乐，愿你如菲奥般聪慧灵动，活出自己的精彩。", 
+                        people: "适配人群：聪慧灵动，有自己独特想法的你",
+                        effect: "【聪慧灵动】：新的一年展现独特魅力，收获认可" 
+                    }
+                ]
+            },
+            {
+                name: "吉娜",
+                title: "《红猪》· 优雅的酒吧老板娘",
+                blessings: [
+                    { 
+                        quote: "新年守节，愿你如吉娜般优雅大方，气质出众。", 
+                        people: "适配人群：优雅大方，有独特气质的你",
+                        effect: "【优雅大方】：新的一年气质优雅，举止大方" 
+                    },
+                    { 
+                        quote: "新春忠勇，愿你像吉娜一样深情专一，珍惜感情。", 
+                        people: "适配人群：深情专一，格外珍惜感情的你",
+                        effect: "【深情专一】：新的一年对待感情认真，收获美满的爱情" 
+                    },
+                    { 
+                        quote: "岁新福至，愿你拥有吉娜的魅力，吸引志同道合的人。", 
+                        people: "适配人群：有独特魅力，能吸引同频之人的你",
+                        effect: "【魅力四射】：新的一年魅力十足，人缘爆棚" 
+                    },
+                    { 
+                        quote: "新年安康，愿你如吉娜般从容优雅，历经岁月仍美好。", 
+                        people: "适配人群：从容优雅，历经时光仍保持美好的你",
+                        effect: "【从容优雅】：新的一年岁月静好，优雅如初" 
+                    }
+                ]
+            },
+
+            // 《幽灵公主》系列
+            {
+                name: "阿席达卡",
+                title: "《幽灵公主》· 勇敢的少年战士",
+                blessings: [
+                    { 
+                        quote: "新年远航，愿你如阿席达卡般勇敢正义，守护心中的美好。", 
+                        people: "适配人群：勇敢正义，有自己坚守的美好信念的你",
+                        effect: "【正义勇敢】：新的一年坚守正义，勇敢守护自己珍视的一切" 
+                    },
+                    { 
+                        quote: "新春开拓，愿你像阿席达卡一样有担当，承担自己的责任。", 
+                        people: "适配人群：有担当，愿意承担责任的你",
+                        effect: "【勇于担当】：新的一年有责任感，勇于承担自己的使命" 
+                    },
+                    { 
+                        quote: "岁新福至，愿你拥有阿席达卡的坚韧，即使受伤也不退缩。", 
+                        people: "适配人群：坚韧不屈，即使受伤也不愿退缩的你",
+                        effect: "【坚韧不屈】：新的一年即使遇到挫折，也能坚强面对" 
+                    },
+                    { 
+                        quote: "新年开运，愿你如阿席达卡般温柔勇敢，守护心中的正义。", 
+                        people: "适配人群：温柔且勇敢，坚守正义的你",
+                        effect: "【温柔勇敢】：新的一年坚守正义，收获心安" 
+                    }
+                ]
+            },
+            {
+                name: "珊",
+                title: "《幽灵公主》· 与自然共生的少女",
+                blessings: [
+                    { 
+                        quote: "新年收复，愿你如珊般热爱自然，与万物和谐共处。", 
+                        people: "适配人群：热爱自然，渴望与万物和谐相处的你",
+                        effect: "【和谐共生】：新的一年与自然和谐相处，生活充满美好" 
+                    },
+                    { 
+                        quote: "新春坚守，愿你像珊一样勇敢无畏，保护自己的家园。", 
+                        people: "适配人群：勇敢无畏，愿意守护家园的你",
+                        effect: "【守护家园】：新的一年守护自己的家庭和生活，平安幸福" 
+                    },
+                    { 
+                        quote: "岁新福至，愿你拥有珊的野性，活出真实的自我。", 
+                        people: "适配人群：不愿被驯服，想活出真实自我的你",
+                        effect: "【真实自我】：新的一年不压抑自己，活出真实的样子" 
+                    },
+                    { 
+                        quote: "新年喜乐，愿你如珊般纯粹勇敢，坚守心中的热爱。", 
+                        people: "适配人群：纯粹勇敢，有自己坚守的热爱的你",
+                        effect: "【纯粹勇敢】：新的一年坚守热爱，不负初心" 
+                    }
+                ]
+            },
+
+            // 《天空之城》系列
+            {
+                name: "希达",
+                title: "《天空之城》· 温柔的公主",
+                blessings: [
+                    { 
+                        quote: "新年同欢，愿你如希达般温柔善良，拥有纯净的心灵。", 
+                        people: "适配人群：内心纯净，温柔善良的你",
+                        effect: "【心灵纯净】：新的一年内心纯净，善良待人" 
+                    },
+                    { 
+                        quote: "新春踏歌，愿你像希达一样勇敢坚强，面对危险不退缩。", 
+                        people: "适配人群：看似柔弱却勇敢坚强的你",
+                        effect: "【勇敢坚强】：新的一年勇敢面对困难，坚强不屈" 
+                    },
+                    { 
+                        quote: "岁华新至，愿你拥有希达的智慧，懂得放下不属于自己的东西。", 
+                        people: "适配人群：需要学会放下，轻装上阵的你",
+                        effect: "【懂得放下】：新的一年学会放下，轻装上阵" 
+                    },
+                    { 
+                        quote: "新年安康，愿你如希达般温柔坚定，守护心中的美好。", 
+                        people: "适配人群：温柔且坚定，有自己守护的美好信念的你",
+                        effect: "【温柔坚定】：新的一年守护美好，收获心安" 
+                    }
+                ]
+            },
+            {
+                name: "巴鲁",
+                title: "《天空之城》· 勇敢的少年",
+                blessings: [
+                    { 
+                        quote: "新年安康，愿你如巴鲁般勇敢正直，追求自己的梦想。", 
+                        people: "适配人群：勇敢正直，敢于追求梦想的你",
+                        effect: "【追梦前行】：新的一年勇敢追求梦想，不轻易放弃" 
+                    },
+                    { 
+                        quote: "新春纳福，愿你像巴鲁一样热情好客，结交更多好友。", 
+                        people: "适配人群：热情开朗，喜欢结交朋友的你",
+                        effect: "【广结善缘】：新的一年朋友满天下，贵人常相伴" 
+                    },
+                    { 
+                        quote: "岁新福至，愿你拥有巴鲁的真诚，待人真心换真心。", 
+                        people: "适配人群：真诚待人，渴望真心换真心的你",
+                        effect: "【真诚待人】：新的一年真诚对待他人，收获真挚的感情" 
+                    },
+                    { 
+                        quote: "新年开运，愿你如巴鲁般勇敢无畏，奔赴心中的美好。", 
+                        people: "适配人群：勇敢无畏，愿意奔赴美好未来的你",
+                        effect: "【勇敢奔赴】：新的一年勇敢前行，靠近美好" 
+                    }
+                ]
+            },
+
+            // 《崖上的波妞》系列
+            {
+                name: "波妞",
+                title: "《崖上的波妞》· 活泼的金鱼公主",
+                blessings: [
+                    { 
+                        quote: "新年纳祥，愿你如波妞般天真烂漫，对世界充满热爱。", 
+                        people: "适配人群：天真烂漫，永远热爱生活的你",
+                        effect: "【热爱生活】：新的一年对生活充满热爱，每天都开开心心" 
+                    },
+                    { 
+                        quote: "新春吉庆，愿你像波妞一样勇敢追爱，大胆表达自己的心意。", 
+                        people: "适配人群：敢于表达，不吝啬传递爱意的你",
+                        effect: "【勇敢表达】：新的一年敢于表达，不留遗憾" 
+                    },
+                    { 
+                        quote: "岁首迎新，愿你拥有波妞的纯粹，喜欢就是喜欢，简单直接。", 
+                        people: "适配人群：性格纯粹，喜欢简单直接的你",
+                        effect: "【纯粹简单】：新的一年活得简单，纯粹快乐" 
+                    },
+                    { 
+                        quote: "新年喜乐，愿你如波妞般勇敢做自己，热烈而鲜活。", 
+                        people: "适配人群：敢于做自己，活得热烈鲜活的你",
+                        effect: "【鲜活热烈】：新的一年活得热烈，不负时光" 
+                    }
+                ]
+            },
+            {
+                name: "宗介",
+                title: "《崖上的波妞》· 温柔的小男孩",
+                blessings: [
+                    { 
+                        quote: "新年奋进，愿你如宗介般温柔善良，守护自己喜欢的人。", 
+                        people: "适配人群：温柔善良，愿意守护喜欢之人的你",
+                        effect: "【温柔守护】：新的一年温柔对待他人，守护自己喜欢的一切" 
+                    },
+                    { 
+                        quote: "新春纳福，愿你像宗介一样信守承诺，做一个可靠的人。", 
+                        people: "适配人群：信守承诺，值得信赖的你",
+                        effect: "【可靠守信】：新的一年言出必行，成为可靠的人" 
+                    },
+                    { 
+                        quote: "岁新福至，愿你拥有宗介的勇气，即使害怕也不退缩。", 
+                        people: "适配人群：即使害怕也能鼓起勇气面对的你",
+                        effect: "【勇敢面对】：新的一年即使害怕，也有勇气面对困难" 
+                    },
+                    { 
+                        quote: "新年安康，愿你如宗介般纯粹真诚，收获简单的幸福。", 
+                        people: "适配人群：纯粹真诚，容易满足的你",
+                        effect: "【纯粹幸福】：新的一年收获简单而真挚的幸福" 
+                    }
+                ]
+            },
+
+            // 《起风了》系列
+            {
+                name: "堀越二郎",
+                title: "《起风了》· 追梦的飞机设计师",
+                blessings: [
+                    { 
+                        quote: "新年革新，愿你如二郎般执着追梦，不忘初心。", 
+                        people: "适配人群：执着追梦，不愿忘记初心的你",
+                        effect: "【执着追梦】：新的一年坚持自己的梦想，不轻易放弃" 
+                    },
+                    { 
+                        quote: "新春进取，愿你像二郎一样精益求精，追求完美。", 
+                        people: "适配人群：追求极致，渴望做到最好的你",
+                        effect: "【精益求精】：新的一年追求卓越，做到最好的自己" 
+                    },
+                    { 
+                        quote: "岁新福至，愿你拥有二郎的专注，一心向着目标前进。", 
+                        people: "适配人群：专注目标，不受外界干扰的你",
+                        effect: "【专注前行】：新的一年专注目标，不受外界干扰" 
+                    },
+                    { 
+                        quote: "新年开运，愿你如二郎般热爱所做之事，不负热爱。", 
+                        people: "适配人群：对热爱之事全力以赴的你",
+                        effect: "【不负热爱】：新的一年为热爱奔赴，收获成就感" 
+                    }
+                ]
+            },
+            {
+                name: "菜穗子",
+                title: "《起风了》· 温柔的患病少女",
+                blessings: [
+                    { 
+                        quote: "新年修德，愿你如菜穗子般温柔美好，即使生病也不抱怨。", 
+                        people: "适配人群：温柔美好，即使身处困境也不抱怨的你",
+                        effect: "【温柔美好】：新的一年即使遇到困难，也保持温柔美好" 
+                    },
+                    { 
+                        quote: "新春明礼，愿你像菜穗子一样珍惜时光，享受每一刻美好。", 
+                        people: "适配人群：懂得珍惜，享受当下的你",
+                        effect: "【珍惜当下】：新的一年珍惜眼前，享受每一个美好瞬间" 
+                    },
+                    { 
+                        quote: "岁新福至，愿你拥有菜穗子的坚强，即使脆弱也不轻易倒下。", 
+                        people: "适配人群：外表柔弱内心坚强的你",
+                        effect: "【外柔内刚】：新的一年外表温柔，内心坚强" 
+                    },
+                    { 
+                        quote: "新年安康，愿你如菜穗子般温柔治愈，与生活温柔相处。", 
+                        people: "适配人群：温柔治愈，能与生活和解的你",
+                        effect: "【温柔和解】：新的一年与生活温柔相处，收获美好" 
+                    }
+                ]
+            },
+
+            // 《侧耳倾听》系列
+            {
+                name: "月岛雯",
+                title: "《侧耳倾听》· 热爱读书的少女",
+                blessings: [
+                    { 
+                        quote: "新年悟道，愿你如雯般热爱学习，不断提升自己。", 
+                        people: "适配人群：热爱学习，渴望自我提升的你",
+                        effect: "【热爱学习】：新的一年保持学习的热情，不断进步" 
+                    },
+                    { 
+                        quote: "新春自然，愿你像雯一样勇敢追梦，找到自己的人生方向。", 
+                        people: "适配人群：正在寻找人生方向，勇敢追梦的你",
+                        effect: "【找到方向】：新的一年明确目标，找到人生的方向" 
+                    },
+                    { 
+                        quote: "岁新福至，愿你拥有雯的坚持，为了梦想努力奋斗。", 
+                        people: "适配人群：为了梦想愿意努力奋斗的你",
+                        effect: "【努力奋斗】：新的一年为梦想拼搏，不负韶华" 
+                    },
+                    { 
+                        quote: "新年开运，愿你如雯般热爱生活，在成长中遇见美好。", 
+                        people: "适配人群：热爱生活，在成长中不断遇见美好的你",
+                        effect: "【成长美好】：新的一年在成长中收获更多美好" 
+                    }
+                ]
+            },
+            {
+                name: "天泽圣司",
+                title: "《侧耳倾听》· 追梦的少年",
+                blessings: [
+                    { 
+                        quote: "新年向善，愿你如圣司般有追求，为了梦想远赴他乡。", 
+                        people: "适配人群：为了梦想愿意奔赴远方的你",
+                        effect: "【追求梦想】：新的一年为了梦想，敢于远行" 
+                    },
+                    { 
+                        quote: "新春励志，愿你像圣司一样优秀，成为他人的榜样。", 
+                        people: "适配人群：渴望变得优秀，成为他人榜样的你",
+                        effect: "【成为榜样】：新的一年变得优秀，成为他人学习的榜样" 
+                    },
+                    { 
+                        quote: "岁新福至，愿你拥有圣司的勇气，为了梦想勇敢出发。", 
+                        people: "适配人群：有勇气为梦想迈出第一步的你",
+                        effect: "【勇敢出发】：新的一年有勇气为梦想迈出第一步" 
+                    },
+                    { 
+                        quote: "新年喜乐，愿你如圣司般坚定执着，奔赴心中的热爱。", 
+                        people: "适配人群：坚定执着，为热爱奔赴的你",
+                        effect: "【坚定奔赴】：新的一年为热爱前行，收获成长" 
+                    }
+                ]
+            }
+        ];
+
+        // DOM元素
+        const questionContainer = document.getElementById('questionContainer');
+        const questionTitle = document.getElementById('questionTitle');
+        const optionA = document.getElementById('optionA');
+        const optionB = document.getElementById('optionB');
+        const cardContainer = document.getElementById('cardContainer');
+        const fortuneCard = document.getElementById('fortuneCard');
+        const restartBtn = document.getElementById('restartBtn');
+        const charName = document.getElementById('charName');
+        const charTitle = document.getElementById('charTitle');
+        const blessingQuote = document.getElementById('blessingQuote');
+        const blessingPeople = document.getElementById('blessingPeople');
+        const blessingEffect = document.getElementById('blessingEffect');
+
+        // 答题状态
+        let currentQuestionIndex = 0;
+        let answerCode = ""; // 存储7位答题结果（0/1），用于计算最终祝福
+
+        // 初始化答题
+        function initQuiz() {
+            // 重置状态
+            currentQuestionIndex = 0;
+            answerCode = "";
+            fortuneCard.classList.remove('flipped');
+            
+            // 显示答题区域，隐藏卡片和重新开始按钮
+            questionContainer.style.display = "block";
+            cardContainer.style.display = "none";
+            restartBtn.style.display = "none";
+            
+            // 加载第一道题
+            loadQuestion(currentQuestionIndex);
+        }
+
+        // 加载题目
+        function loadQuestion(index) {
+            if (index >= questions.length) {
+                // 答题完成，计算并显示结果
+                showResult();
+                return;
+            }
+            
+            const question = questions[index];
+            questionTitle.textContent = `${index + 1}. ${question.title}`;
+            optionA.textContent = question.options[0];
+            optionB.textContent = question.options[1];
+            
+            // 绑定选项点击事件
+            optionA.onclick = () => selectAnswer(0);
+            optionB.onclick = () => selectAnswer(1);
+        }
+
+        // 选择答案
+        function selectAnswer(answer) {
+            answerCode += answer.toString();
+            currentQuestionIndex++;
+            loadQuestion(currentQuestionIndex);
+        }
+
+        // 显示结果
+        function showResult() {
+            // 隐藏答题区域，显示卡片
+            questionContainer.style.display = "none";
+            cardContainer.style.display = "block";
+            restartBtn.style.display = "block";
+            
+            // 根据7位二进制答案码（0-127）计算索引
+            const resultIndex = parseInt(answerCode, 2) % (characters.length * 4);
+            const charIndex = Math.floor(resultIndex / 4);
+            const blessingIndex = resultIndex % 4;
+            
+            // 获取对应的角色和祝福
+            const selectedChar = characters[charIndex];
+            const selectedBlessing = selectedChar.blessings[blessingIndex];
+            
+            // 更新卡片内容
+            charName.textContent = selectedChar.name;
+            charTitle.textContent = selectedChar.title;
+            blessingQuote.textContent = selectedBlessing.quote;
+            blessingPeople.textContent = selectedBlessing.people;
+            blessingEffect.textContent = selectedBlessing.effect;
+            
+            // 翻转卡片
+            setTimeout(() => {
+                fortuneCard.classList.add('flipped');
+            }, 500);
+        }
+
+        // 绑定重新开始按钮事件
+        restartBtn.addEventListener('click', initQuiz);
+
+        // 初始化页面
+        window.onload = initQuiz;
+    </script>
+</body>
+</html>
